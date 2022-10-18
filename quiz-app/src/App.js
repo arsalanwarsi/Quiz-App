@@ -1,5 +1,6 @@
 import './App.css';
 import styled from "styled-components";
+import { AccountBox } from './components/accountBox';
 
 const AppContainer = styled.div`
   width: 100%;
@@ -13,7 +14,7 @@ const AppContainer = styled.div`
 function App() {
   return (
     <AppContainer>
-      Arsalan
+      <AccountBox />
     </AppContainer>
   );
 }
