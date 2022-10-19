@@ -18,7 +18,7 @@ export const FormContainer = styled.form`
 
 export const MutedLinks = styled.a`
     font-size: 13px;
-    color: rgba(200, 200, 200, 0.8);
+    color: rgba(200, 200, 200, 1);
     font-weight: 500;
     text-decoration: none;
 `;
@@ -35,22 +35,22 @@ export const Input = styled.input`
     width: 100%;
     height: 40px;
     outline: none;
-    border: 1px solid rgba(200, 200, 200, 0.2);
+    border: 1px solid rgba(200, 200, 200, 0.5);
     padding: 0 10px;
     transition: all 250ms ease-in-out;
-    // border-bottom: 2px solid transparent;
+    border-bottom: 2px solid rgba(200, 200, 200, 0.5);
 
     &::placeholder{
         color: rgba(200, 200, 200, 2);
     }
 
     &:not(:last-of-type) {
-        // border-top: 1px solid rgba(200, 200, 200, 0.5);
+        border-bottom: 2px solid transparent;
     }
 
     &:focus {
         outline: none;
-        border-bottom: 1px solid rgb(190,199,235);
+        border-bottom: 2px solid rgb(190,199,235);
     }
 `;
 
