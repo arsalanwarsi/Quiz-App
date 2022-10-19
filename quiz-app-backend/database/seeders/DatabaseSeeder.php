@@ -3,6 +3,10 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use App\Models\Answers;
+use App\Models\Questions;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -14,11 +18,33 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        User::factory()->create([
+            'name' => 'Arsalan Warsi',
+            'email' => 'warsi@mail.com'
+        ]);
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        $q = Questions::factory()->create();
+
+        Answers::factory(4)->create([
+            'question_id' => $q
+        ]);
+
+        $q = Questions::factory()->create();
+
+        Answers::factory(4)->create([
+            'question_id' => $q
+        ]);
+
+        $q = Questions::factory()->create();
+
+        Answers::factory(4)->create([
+            'question_id' => $q
+        ]);
+
+        $q = Questions::factory()->create();
+
+        Answers::factory(4)->create([
+            'question_id' => $q
+        ]);
     }
 }

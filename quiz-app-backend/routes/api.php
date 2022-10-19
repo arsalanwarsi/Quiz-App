@@ -1,19 +1,13 @@
 <?php
 
+use App\Http\Controllers\QuizController;
+use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-Route::post('/login', function (Request $request) {
+Route::post('/login', [UserController::class, 'Login']);
 
-
-    $user = $request->validate([
-        'email' => ['required', 'email'],
-        'password' => 'required'
-    ]);
-
-    return $user;
-});
-
+Route::middleware('auth:sanctum')->post('/question', [UserController::class, 'AddQuestion']);
 
 /*
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
