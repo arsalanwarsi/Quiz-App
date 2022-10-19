@@ -9,9 +9,11 @@ use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
+use function PHPUnit\Framework\isEmpty;
+
 class UserController extends Controller
 {
-    public function Login(Request $request)
+    public function login(Request $request)
     {
         $data = $request->validate([
             'email' => 'required|string|email',
@@ -34,7 +36,7 @@ class UserController extends Controller
         ], 200);
     }
 
-    public function AddQuestion(Request $request)
+    public function addQuestion(Request $request)
     {
         $data = $request->validate([
             'question' => 'required|string',
@@ -78,5 +80,40 @@ class UserController extends Controller
                 'message' => 'Question not added.'
             ], 409);
         }
+    }
+
+    public function allQuestion()
+    {
+        $data = Questions::all();
+
+        return response([
+            'question' => $data
+        ], 200);
+    }
+
+    public function showQuestion($id)
+    {
+        $question = Questions::find($id);
+
+        if (!$question) {
+            return response([
+                'message' => 'No question found.'
+            ], 200);
+        }
+
+        $question->answers;
+
+        return response([
+            'question' => $question
+        ], 200);
+    }
+
+    public function logout()
+    {
+        auth()->user()->tokens()->delete();
+
+        return response([
+            'message' => 'Logout successfull.'
+        ], 200);
     }
 }
