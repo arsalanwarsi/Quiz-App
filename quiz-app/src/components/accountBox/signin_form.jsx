@@ -16,13 +16,16 @@ export function SignupForm(props) {
             <Input type="password" placeholder="Password" />
             <Input type="password" placeholder="Confirm Password" />
             <MarginVertical />
+            <MarginVertical />
             <SubmitButton>Signup</SubmitButton>
         </FormContainer>
         <MarginVertical />
         <MarginVertical />
-        <MutedLinks>
-            Already have account ?
+        <div>
+            <MutedLinks>
+                Already have account ?
+            </MutedLinks>
             <BoldLink href="#" onClick={switchToSignin}> Signin</BoldLink>
-        </MutedLinks>
+        </div>
     </BoxContainer>
 }

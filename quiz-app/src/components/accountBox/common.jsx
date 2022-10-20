@@ -77,3 +77,15 @@ export const SubmitButton = styled.button`
 export const MarginVertical = styled.div`
     margin: 0.4em 0;
 `;
+
+export const ErrorMessage = styled.div`
+    display: flex;
+    height: 30px;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    color: rgb(117,130,208);
+    font-weight: 600;
+    font-size: 14px;
+    margin-bottom: 1em;
+`;

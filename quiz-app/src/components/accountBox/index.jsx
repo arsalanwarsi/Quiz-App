@@ -12,7 +12,7 @@ const BoxContainer = styled.div`
     flex-direction: column;
     border-radius: 20px;
     background-color: #fff;
-    box-shadow: 0 0  2px rgba(15, 15, 15, 0.28);
+    box-shadow: 0 0  2px rgba(15, 15, 15, 0.3);
     position: relative;
     overflow: hidden;
 `;

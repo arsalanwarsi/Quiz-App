@@ -24,7 +24,8 @@ class UserController extends Controller
 
         if (!$user || !Hash::check($data['password'], $user->password)) {
             return response([
-                'message' => 'Invalid Authentication'
+                'message' => 'Invalid Authentication',
+                'status' => false,
             ], 401);
         }
 
@@ -32,6 +33,7 @@ class UserController extends Controller
 
         return response([
             'user' => ['id' => $user->id, 'email' => $user->email],
+            'status' => true,
             'token' => $token
         ], 200);
     }
