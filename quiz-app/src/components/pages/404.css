@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css?family=Cabin+Sketch');
+
+.site {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.site h1 {
+    font-family: 'Cabin Sketch', cursive;
+    font-size: 3em;
+    text-align: center;
+    opacity: .8;
+    order: 1;
+}
+
+.site h1 small {
+    display: block;
+}

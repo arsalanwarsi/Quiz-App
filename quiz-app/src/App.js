@@ -5,6 +5,7 @@ import Contact from "./components/pages/Contact";
 import Quiz from "./components/pages/Quiz";
 import Login from "./components/pages/Login";
 import Dashboard from "./components/pages/Dashboard";
+import NoMatch from "./components/pages/NoMatch";
 
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
           <Route path="login" element={<Login />} />
           <Route path="dashboard" element={<Dashboard />} />
         </Route>
+        <Route path="*" element={<NoMatch />} />
       </Routes>
     </BrowserRouter>
   );
