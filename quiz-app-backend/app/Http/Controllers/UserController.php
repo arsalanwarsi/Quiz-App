@@ -7,6 +7,7 @@ use App\Models\Questions;
 use App\Models\User;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 use function PHPUnit\Framework\isEmpty;
@@ -20,22 +21,23 @@ class UserController extends Controller
             'password' => 'required|string'
         ]);
 
-        $user = User::where('email', $data['email'])->first();
+        $user = Auth::attempt($data);
 
-        if (!$user || !Hash::check($data['password'], $user->password)) {
+        if (!$user) {
             return response([
                 'message' => 'Invalid Authentication',
                 'status' => false,
             ], 401);
+        } else {
+            $user = User::where('email', $data['email'])->first();
+            $token = $user->createToken('personalToken')->plainTextToken;
+
+            return response([
+                'user' => ['id' => $user->id, 'email' => $user->email],
+                'status' => true,
+                'token' => $token
+            ], 200);
         }
-
-        $token = $user->createToken('personalToken')->plainTextToken;
-
-        return response([
-            'user' => ['id' => $user->id, 'email' => $user->email],
-            'status' => true,
-            'token' => $token
-        ], 200);
     }
 
     public function addQuestion(Request $request)
@@ -48,40 +50,34 @@ class UserController extends Controller
             'option4' => 'required|string'
         ]);
 
-        try {
-            $q_id = Questions::factory()->create([
-                'question' => $data['question']
-            ]);
+        $q_id = Questions::factory()->create([
+            'question' => $data['question']
+        ]);
 
-            Answers::factory()->create([
-                'question_id' => $q_id,
-                'answer' => $data['option1'],
-                'option' => true
-            ]);
+        Answers::factory()->create([
+            'question_id' => $q_id,
+            'answer' => $data['option1'],
+            'option' => true
+        ]);
 
-            Answers::factory()->create([
-                'question_id' => $q_id,
-                'answer' => $data['option2']
-            ]);
+        Answers::factory()->create([
+            'question_id' => $q_id,
+            'answer' => $data['option2']
+        ]);
 
-            Answers::factory()->create([
-                'question_id' => $q_id,
-                'answer' => $data['option3']
-            ]);
+        Answers::factory()->create([
+            'question_id' => $q_id,
+            'answer' => $data['option3']
+        ]);
 
-            Answers::factory()->create([
-                'question_id' => $q_id,
-                'answer' => $data['option4']
-            ]);
+        Answers::factory()->create([
+            'question_id' => $q_id,
+            'answer' => $data['option4']
+        ]);
 
-            return response([
-                'message' => 'Question added.'
-            ], 201);
-        } catch (Exception $e) {
-            return response([
-                'message' => 'Question not added.'
-            ], 409);
-        }
+        return response([
+            'message' => 'Question added.'
+        ], 201);
     }
 
     public function allQuestion()

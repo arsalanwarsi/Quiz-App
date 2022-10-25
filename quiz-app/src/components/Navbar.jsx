@@ -1,8 +1,15 @@
+import { Link } from "react-router-dom"
 
 function Navbar() {
     return (
         <>
-            <h1>Navbar</h1>
+            <nav>
+                <Link to="/">Home</Link>
+                <Link to="/dashboard">Dashboard</Link>
+                <Link to="/contact">Contact</Link>
+                <Link to="/quiz">Quiz</Link>
+                <Link to="/login">Login</Link>
+            </nav>
         </>
     )
 }

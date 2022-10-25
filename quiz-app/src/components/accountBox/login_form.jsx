@@ -1,8 +1,9 @@
 import React, { useContext, useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { AccountContext } from "./accountContext";
 import { BoldLink, BoxContainer, ErrorMessage, FormContainer, Input, MarginVertical, MutedLinks, SubmitButton } from "./common";
+import { useAuth } from "../../utilities/Auth";
 
 
 
@@ -11,6 +12,12 @@ export function LoginForm(props) {
     const { switchToSignup } = useContext(AccountContext);
     const navigate = useNavigate();
 
+    const [user, setUser] = useState("");
+    const auth = useAuth();
+    const location = useLocation();
+
+    const redirectPath = location.state?.path || '/';
+
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState({
@@ -18,10 +25,9 @@ export function LoginForm(props) {
         message: ''
     });
 
-
-
     const submitForm = (e) => {
         e.preventDefault();
+
 
         const user = {
             email,
@@ -44,7 +50,9 @@ export function LoginForm(props) {
                 .then((res) => {
                     if (res.data.status === true) {
                         localStorage.setItem('token', res.data.token);
-                        navigate('/dashboard');
+                        auth.login(res.data.user.email);
+                        console.log(res);
+                        navigate(redirectPath, { replace: true });
                     }
                     else {
                         document.getElementById("login-btn").disabled = false;
