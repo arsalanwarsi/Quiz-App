@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:noNamespaceSchemaLocation="./vendor/phpunit/phpunit/phpunit.xsd"
+         backupGlobals="false"
+         backupStaticAttributes="false"
          bootstrap="vendor/autoload.php"
          colors="true"
+         convertErrorsToExceptions="true"
+         convertNoticesToExceptions="true"
+         convertWarningsToExceptions="true"
+         processIsolation="false"
+         stopOnFailure="false"
+         verbose="true"
 >
     <testsuites>
         <testsuite name="Unit">
@@ -16,16 +24,27 @@
         <include>
             <directory suffix=".php">./app</directory>
         </include>
+        <report>
+            <html outputDirectory="public/build/coverage" />
+            <clover outputFile="public/build/coverage/clover.xml" />
+            <cobertura outputFile="public/build/coverage/cobertura.xml" />
+        </report>
     </coverage>
+    <logging>
+        <junit outputFile="public/build/coverage/junit.xml" />
+    </logging>
     <php>
-        <env name="APP_ENV" value="testing"/>
-        <env name="BCRYPT_ROUNDS" value="4"/>
-        <env name="CACHE_DRIVER" value="array"/>
-        <!-- <env name="DB_CONNECTION" value="sqlite"/> -->
-        <!-- <env name="DB_DATABASE" value=":memory:"/> -->
-        <env name="MAIL_MAILER" value="array"/>
-        <env name="QUEUE_CONNECTION" value="sync"/>
-        <env name="SESSION_DRIVER" value="array"/>
-        <env name="TELESCOPE_ENABLED" value="false"/>
+        <server name="APP_ENV" value="testing" force="true"/>
+        <server name="STRIPE_PUBLISH_KEY" value="pk_test_51KLTGjFKu9JHnB3KzrhK34ewpPOihKZpcNWhAOy6a57E2wezZOXqfoexUtDtdAkUkamw0joxrOiGklJxeNFP0CdX005CeISDQn" force="true"/>
+        <server name="STRIPE_SECRET_KEY" value="sk_test_51KLTGjFKu9JHnB3KlaeZCcA8a3ZhO10ulf9W5kWGrhhv4CD9l6NQ0ymLNIfRoKt25ETlbUJr10hhIa6y5N1epIrF00VoqTfzGa" force="true"/>
+        <server name="BCRYPT_ROUNDS" value="4"/>
+        <server name="CACHE_DRIVER" value="array"/>
+        <server name="DB_CONNECTION" value="sqlite"/>
+        <server name="DB_DATABASE" value=":memory:"/>
+        <server name="MAIL_MAILER" value="array"/>
+        <server name="QUEUE_CONNECTION" value="sync"/>
+        <server name="SESSION_DRIVER" value="array"/>
+        <server name="TELESCOPE_ENABLED" value="false"/>
+        <server name="FILESYSTEM_DRIVER" value="local"/>
     </php>
 </phpunit>

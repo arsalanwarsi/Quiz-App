@@ -11,13 +11,13 @@ export function LoginForm(props) {
     const { switchToSignup } = useContext(AccountContext);
     const navigate = useNavigate();
 
-
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState({
         status: false,
         message: ''
     });
+
 
 
     const submitForm = (e) => {
@@ -27,6 +27,7 @@ export function LoginForm(props) {
             email,
             password,
         };
+
         if (email === '' || password === '') {
             setError({
                 status: true,
@@ -84,5 +85,6 @@ export function LoginForm(props) {
             </MutedLinks>
             <BoldLink href="#" onClick={switchToSignup}> Signup</BoldLink>
         </div>
+        <MarginVertical />
     </BoxContainer>
 }
