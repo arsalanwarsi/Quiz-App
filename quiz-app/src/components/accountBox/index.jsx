@@ -8,6 +8,7 @@ import { SignupForm } from "./signin_form";
 const BoxContainer = styled.div`
     width:280px;
     min-height: 550px;
+    margin-top: 20px;
     display: flex;
     flex-direction: column;
     border-radius: 20px;
@@ -20,6 +21,7 @@ const BoxContainer = styled.div`
 const TopDrop = styled.div`
     width: 100%;
     height: 160px;
+    margin-top: 80px;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;

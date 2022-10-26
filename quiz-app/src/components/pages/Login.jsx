@@ -19,13 +19,11 @@ function Login() {
     if (auth.user) {
         return <Navigate to="/" />;
     }
-    return (
-        <>
-            <AppContainer>
-                <AccountBox />
-            </AppContainer>
-        </>
-    )
+    return (<>
+        <AppContainer>
+            <AccountBox />
+        </AppContainer>
+    </>);
 }
 
 export default Login

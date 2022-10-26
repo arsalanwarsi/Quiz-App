@@ -26,7 +26,7 @@ export const MutedLinks = styled.a`
 export const BoldLink = styled.a`
     font-size: 13px;
     color: rgb(117,130,208);
-    font-weight: 500;
+    font-weight: 600;
     text-decoration: none;
     margin: 10px 0;
 `;
@@ -35,6 +35,7 @@ export const Input = styled.input`
     width: 100%;
     height: 40px;
     outline: none;
+    font-size: 13px;
     border: 1px solid rgba(200, 200, 200, 0.5);
     padding: 0 10px;
     transition: all 250ms ease-in-out;
@@ -58,7 +59,7 @@ export const SubmitButton = styled.button`
     width: 100%;
     padding: 10px 40%;
     color: #fff;
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 600;
     border: none;
     border-radius: 50px;
@@ -86,6 +87,6 @@ export const ErrorMessage = styled.div`
     align-items: center;
     color: rgb(117,130,208);
     font-weight: 600;
-    font-size: 14px;
+    font-size: 13px;
     margin-bottom: 1em;
 `;

@@ -10,13 +10,11 @@ function Dashboard() {
         localStorage.removeItem("token");
         navigate('/');
     }
-    return (
-        <>
-            <div>Dashboard</div>
-            <div>Welcome {auth.user}</div>
-            <div><button onClick={logoutUser}>Logout</button></div>
-        </>
-    )
+    return (<>
+        <div>Dashboard</div>
+        <div>Welcome {auth.user}</div>
+        <div><button onClick={logoutUser}>Logout</button></div>
+    </>);
 }
 
 export default Dashboard

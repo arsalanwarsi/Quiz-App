@@ -8,7 +8,7 @@ function NoMatch() {
                 <small>Page Not Found</small>
             </h1>
         </div>
-    </>)
+    </>);
 }
 
 export default NoMatch
