@@ -1,4 +1,7 @@
 {
   "editor.fontFamily": "'cascadia code'",
-  "editor.fontLigatures": true
+  "editor.fontLigatures": true,
+  "emmet.includeLanguages": {
+    "javascript": ""
+  }
 }

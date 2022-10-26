@@ -114,4 +114,11 @@ class UserController extends Controller
             'message' => 'Logout successfull.'
         ], 200);
     }
+
+    public function isLogin()
+    {
+        return response([
+            'message' => 'User authenticated.'
+        ], 200);
+    }
 }

@@ -1,5 +1,7 @@
-// import React from 'react'
+
+import { Navigate } from "react-router-dom";
 import styled from "styled-components";
+import { useAuth } from "../../utilities/Auth";
 import { AccountBox } from '../accountBox';
 
 const AppContainer = styled.div`
@@ -12,6 +14,11 @@ const AppContainer = styled.div`
 `;
 
 function Login() {
+    const auth = useAuth();
+
+    if (auth.user) {
+        return <Navigate to="/" />;
+    }
     return (
         <>
             <AppContainer>

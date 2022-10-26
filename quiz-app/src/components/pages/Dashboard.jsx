@@ -7,6 +7,7 @@ function Dashboard() {
 
     const logoutUser = () => {
         auth.logout();
+        localStorage.removeItem("token");
         navigate('/');
     }
     return (

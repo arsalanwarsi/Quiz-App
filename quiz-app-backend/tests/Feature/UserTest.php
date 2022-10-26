@@ -85,4 +85,13 @@ class UserTest extends TestCase
 
         $res->assertStatus(200);
     }
+
+    public function test_is_user_login()
+    {
+        $this->test_user_login();
+
+        $res = $this->get('/api/islogin');
+
+        $res->assertStatus(200);
+    }
 }
