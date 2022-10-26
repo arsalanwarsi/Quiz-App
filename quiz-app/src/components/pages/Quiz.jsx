@@ -2,7 +2,7 @@ import React from 'react'
 
 function Quiz() {
     return (<>
-        <div>Quiz</div>
+        <h1>Quiz</h1>
     </>);
 }
 

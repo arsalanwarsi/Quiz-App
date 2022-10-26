@@ -1,6 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 
+.bg-nav {
+    background: rgb(16, 24, 80);
+    background: linear-gradient(90deg, rgba(16, 24, 80, 1) 0%, rgba(5, 6, 40, 1) 100%);
+}
 
+.navbar-brand img {
+    margin-right: 10px;
+}
+
+/* 
 .headbar-font {
     background-color: darkslateblue;
     font-size: 13px;
@@ -26,11 +35,11 @@
 }
 
 .main-banner {
-    /* background-image: url('/wp-content/themes/mytheme/assets/images/banner-main.png'); */
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    min-height: 400px;
+    background-image: url('/wp-content/themes/mytheme/assets/images/banner-main.png');
+background-size: cover;
+background-repeat: no-repeat;
+background-position: center;
+min-height: 400px;
 }
 
 .banner-text {
@@ -246,8 +255,8 @@
 
 .menu .menu-item a:hover {
     color: chartreuse;
-    /* font-weight: bold; */
-    /* font-style: italic; */
+    font-weight: bold;
+    font-style: italic;
     text-decoration: none;
 }
 
@@ -369,3 +378,5 @@
 .test {
     color: blue;
 }
+
+*/

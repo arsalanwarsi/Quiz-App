@@ -1,9 +1,10 @@
 import { Outlet } from "react-router-dom";
 import Navbar from "../Navbar";
+import logo from "../../assets/images/logo.png";
 
 function Layout() {
     return (<>
-        <Navbar />
+        <Navbar title="QUIZ" brandLogo={logo} />
         <Outlet />
     </>);
 }

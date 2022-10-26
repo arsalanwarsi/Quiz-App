@@ -12,7 +12,7 @@ export function LoginForm(props) {
     const { switchToSignup } = useContext(AccountContext);
     const navigate = useNavigate();
 
-    const [user, setUser] = useState("");
+    // const [user, setUser] = useState("");
     const auth = useAuth();
     const location = useLocation();
 
@@ -88,7 +88,7 @@ export function LoginForm(props) {
         <MarginVertical />
         <MarginVertical />
         <div>
-            <MutedLinks href="/">
+            <MutedLinks>
                 Don't have account ?
             </MutedLinks>
             <BoldLink href="#" onClick={switchToSignup}> Signup</BoldLink>

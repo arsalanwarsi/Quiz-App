@@ -6,14 +6,14 @@ import { AccountContext } from "./accountContext";
 import { SignupForm } from "./signin_form";
 
 const BoxContainer = styled.div`
-    width:280px;
+    width:300px;
     min-height: 550px;
     margin-top: 20px;
     display: flex;
     flex-direction: column;
     border-radius: 20px;
     background-color: #fff;
-    box-shadow: 0 0  2px rgba(15, 15, 15, 0.3);
+    box-shadow: 0 0  2px rgba(15, 15, 15, .7);
     position: relative;
     overflow: hidden;
 `;
@@ -35,14 +35,14 @@ const BackDrop = styled(motion.div)`
     position: absolute;
     display: flex;
     flex-direction: column;
-    border-radius: 50%;
+    border-radius: 60%;
     transform: rotate(60deg);
-    top: -290px;
-    left: -70px;
-    // background: rgb(255,244,0);
-    // background: linear-gradient(90deg, rgba(255,244,0,1) 0%, rgba(227,218,21,1) 86%, rgba(255,201,0,1) 100%);
-    background: rgb(190,199,235);
-    background: linear-gradient(90deg, rgba(190,199,235,1) 0%, rgba(94,113,233,1) 49%, rgba(23,78,201,1) 100%);
+    top: -300px;
+    left: -90px;
+    // background: rgb(190,199,235);
+    // background: linear-gradient(90deg, rgba(190,199,235,1) 0%, rgba(94,113,233,1) 49%, rgba(23,78,201,1) 100%);
+    background: rgb(45,59,148);
+    background: linear-gradient(90deg, rgba(45,59,148,1) 0%, rgba(0,0,0,1) 100%);
 `;
 
 const HeaderContiner = styled.div`
@@ -149,7 +149,6 @@ export function AccountBox(props) {
                 <InnerContainer>
                     {active === "signin" && <LoginForm />}
                     {active === "signup" && <SignupForm />}
-                    {/* <p onClick={palyEnpandingAnimation}>clickme</p> */}
                 </InnerContainer>
             </BoxContainer >
         </AccountContext.Provider>
