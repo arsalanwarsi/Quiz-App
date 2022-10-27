@@ -82,7 +82,7 @@ class UserController extends Controller
 
     public function allQuestion()
     {
-        $data = Questions::all();
+        $data = Questions::with('answers')->get();
 
         return response([
             'question' => $data

@@ -7,6 +7,7 @@ function Navbar(props) {
 
     const logoutUser = () => {
         localStorage.removeItem("token");
+        localStorage.removeItem("user");
         navigate('/');
     }
 

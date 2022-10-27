@@ -1,15 +1,15 @@
-import { Link, Outlet } from "react-router-dom";
+import { NavLink, Outlet } from "react-router-dom";
 
 function Dashboard() {
 
     return (<>
-        <nav className="navbar-expand navbar-dark bg-nav">
+        <nav className="navbar-expand navbar-dark bg-menu">
             <div className="container">
                 <div>
                     <div className="d-flex justify-content-around navbar-nav navbar-nav">
-                        <Link className="nav-link" to='question/add'>Add Question</Link>
-                        <Link className="nav-link" to='question/edit'>Edit Question</Link>
-                        <Link className="nav-link" to='question/delete'>Delete Question</Link>
+                        <NavLink className="nav-link" to='question/add'>Add Question</NavLink>
+                        <NavLink className="nav-link" to='question/edit'>Edit Question</NavLink>
+                        <NavLink className="nav-link" to='question/delete'>Delete Question</NavLink>
                     </div>
                 </div>
             </div>
