@@ -1,19 +1,25 @@
-import { useNavigate } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import { useAuth } from "../../utilities/Auth"
 
 function Dashboard() {
-    const auth = useAuth();
-    const navigate = useNavigate();
 
-    const logoutUser = () => {
-        auth.logout();
-        localStorage.removeItem("token");
-        navigate('/');
-    }
+    const auth = useAuth();
+
     return (<>
         <div>Dashboard</div>
         <div>Welcome {auth.user}</div>
-        <div><button onClick={logoutUser}>Logout</button></div>
+        <nav className="navbar-expand navbar-dark bg-nav">
+            <div className="container">
+                <div>
+                    <div className="d-flex justify-content-around navbar-nav navbar-nav">
+                        <Link className="nav-link" to='question/add'>Add Question</Link>
+                        <Link className="nav-link" to='question/edit'>Edit Question</Link>
+                        <Link className="nav-link" to='question/delete'>Delete Question</Link>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <Outlet />
     </>);
 }
 
