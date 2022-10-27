@@ -1,13 +1,8 @@
 import { Link, Outlet } from "react-router-dom";
-import { useAuth } from "../../utilities/Auth"
 
 function Dashboard() {
 
-    const auth = useAuth();
-
     return (<>
-        <div>Dashboard</div>
-        <div>Welcome {auth.user}</div>
         <nav className="navbar-expand navbar-dark bg-nav">
             <div className="container">
                 <div>

@@ -33,7 +33,7 @@ class UserController extends Controller
             $token = $user->createToken('personalToken')->plainTextToken;
 
             return response([
-                'user' => ['id' => $user->id, 'email' => $user->email],
+                'user' => ['id' => $user->id, 'email' => $user->email, 'name' => $user->name],
                 'status' => true,
                 'token' => $token
             ], 200);

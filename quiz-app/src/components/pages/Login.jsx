@@ -1,7 +1,6 @@
 
 import { Navigate } from "react-router-dom";
 import styled from "styled-components";
-import { useAuth } from "../../utilities/Auth";
 import { AccountBox } from '../accountBox';
 
 const AppContainer = styled.div`
@@ -14,10 +13,11 @@ const AppContainer = styled.div`
 `;
 
 function Login() {
-    const auth = useAuth();
 
-    if (auth.user) {
-        return <Navigate to="/" />;
+    const userAuth = localStorage.getItem("token");
+
+    if (userAuth != null) {
+        return <Navigate to="/home" />;
     }
     return (<>
         <AppContainer>

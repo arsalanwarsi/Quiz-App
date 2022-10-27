@@ -50,8 +50,9 @@ export function LoginForm(props) {
                 .then((res) => {
                     if (res.data.status === true) {
                         localStorage.setItem('token', res.data.token);
-                        auth.login(res.data.user.email);
-                        console.log(res);
+                        localStorage.setItem('user', res.data.user.name);
+                        document.cookie = "token=" + res.data.token + ";expires=10; path=/";
+                        auth.login(res.data.user.name);
                         navigate(redirectPath, { replace: true });
                     }
                     else {
