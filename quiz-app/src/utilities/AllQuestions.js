@@ -1,11 +1,11 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 function AllQuestions() {
 
     const [questions, setQuestions] = useState([]);
 
-
+    const qqq = useRef(null);
 
     useEffect(() => {
         const token = localStorage.getItem("token");
@@ -15,54 +15,62 @@ function AllQuestions() {
         axios
             .get('http://127.0.0.1:8000/api/question', config)
             .then((res) => {
-                setQuestions(res.data.question)
-                // allQ.forEach((data) => {
-                //     console.log(data.answers);
-                // })
-
-                // let qq = [];h
-
-                // allQ.forEach(element => {
-                //     // setQuestions(questions + ' | ' + element.question);
-                //     qq.push(element.question + '|');
-                // });
-                // console.log(qq);
-                // console.log(String(qq));
-                // setQuestions(qq);
+                if (res.status === 200) {
+                    setQuestions(res.data.question);
+                }
             })
             .catch((err) => {
             });
-    }, [])
+    }, []);
+
+    const handleAnswer = (e) => {
+
+        const element = document.getElementsByClassName(e.target.dataset.question)[0];
+        // const el2 = qqq.current;
+
+        const radioBtn = document.getElementsByName(e.target.name);
+        radioBtn.forEach((data, key) => {
+            data.disabled = true
+        })
+
+        if (e.target.dataset.option === '1') {
+            console.log("Correct");
+            element.innerHTML = "Correct Answer";
+
+        } else {
+            console.log("Wrong");
+            element.innerHTML = "Wrong Answer";
+        }
+
+        element.style.display = "block";
+    }
 
 
     return (
         <>
             <div>
-                HEAD
-                {console.log(questions.sort(function (a, b) { return 0.5 - Math.random() }))}
-
-                {questions.map((element, key) => {
-                    // console.log(element);
+                {questions.sort(function (a, b) { return 0.5 - Math.random() }).map((question, key) => {
                     return (
-                        <div key={key}>
-                            <div>{element.id + " === " + element.question}</div>
-                            {/* <div>{element.answers}</div> */}
-                            {console.log(element.answers)}
-                            {/* {element.answers.sort((a, b) => 0.5 - Math.random())} */}
-                            {/* {console.log(element.answers.sort(function (a, b) { return a.option - b.option }))} */}
-                            {console.log(element.answers.sort(function (a, b) { return 0.5 - Math.random() }))}
-                            {/* {console.log(element.answers.sort())} */}
-
-                            {element.answers.map((ans, key) => {
+                        <div className="mb-4 quiz-question" key={key}>
+                            <h5>Question {key + 1}</h5>
+                            <p>{question.question}</p>
+                            {question.answers.sort(function (a, b) { return 0.5 - Math.random() }).map((answer, key) => {
                                 return (
-                                    <div key={key}>
-                                        <div>{ans.id + " | " + ans.answer}</div>
+                                    <div className="form-check" key={key}>
+                                        <input className="form-check-input" type="radio" name={"question" + question.id} id={"question" + question.id + key} data-option={answer.option} data-question={"question-" + question.id} onClick={handleAnswer} />
+                                        <label className="form-check-label" htmlFor={"question" + question.id + key}>
+                                            {answer.answer}
+                                        </label>
                                     </div>
-                                )
+                                );
                             })
                             }
+                            {/* {userAnswer.status ? <div><p>{userAnswer.message}</p></div> : ''} */}
+                            <div className={"question-" + question.id + " ans-val"} ref={qqq}>
+                                -
+                            </div>
                         </div>
-                    )
+                    );
                 })}
             </div>
         </>
