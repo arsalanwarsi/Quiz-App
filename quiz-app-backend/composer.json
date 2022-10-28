@@ -1,24 +1,42 @@
 {
-    "name": "laravel/laravel",
+    "name": "cooperative-computing/quiz-app",
     "type": "project",
-    "description": "The Laravel Framework.",
-    "keywords": ["framework", "laravel"],
+    "description": "Quiz App",
+    "keywords": [
+        "cooperative-computing",
+        "quiz app"
+    ],
     "license": "MIT",
     "require": {
-        "php": "^8.0.2",
-        "guzzlehttp/guzzle": "^7.2",
-        "laravel/framework": "^9.19",
-        "laravel/sanctum": "^3.0",
-        "laravel/tinker": "^2.7"
+        "php": "^7.3|^8.0",
+        "barryvdh/laravel-dompdf": "^0.9.0",
+        "beyondcode/laravel-websockets": "^1.12",
+        "fruitcake/laravel-cors": "^2.0",
+        "guzzlehttp/guzzle": "^7.0.1",
+        "jildertmiedema/laravel-plupload": "^0.7.1",
+        "lab404/laravel-impersonate": "^1.7",
+        "laravel/framework": "^8.65",
+        "laravel/sanctum": "^2.11",
+        "laravel/tinker": "^2.5",
+        "livewire/livewire": "^2.8",
+        "pusher/pusher-php-server": "^5.0",
+        "stripe/stripe-php": "^7.103",
+        "twilio/sdk": "^6.33"
     },
     "require-dev": {
+        "facade/ignition": "^2.5",
         "fakerphp/faker": "^1.9.1",
-        "laravel/pint": "^1.0",
+        "laravel/breeze": "^1.4",
         "laravel/sail": "^1.0.1",
         "mockery/mockery": "^1.4.4",
-        "nunomaduro/collision": "^6.1",
+        "nunomaduro/collision": "^5.10",
+        "nunomaduro/phpinsights": "^2.0",
+        "orchestra/testbench": "^6.21",
+        "phploc/phploc": "^7.0",
         "phpunit/phpunit": "^9.5.10",
-        "spatie/laravel-ignition": "^1.0"
+        "sebastian/phpcpd": "^6.0",
+        "squizlabs/php_codesniffer": "^3.6",
+        "vimeo/psalm": "^4.7"
     },
     "autoload": {
         "psr-4": {
@@ -33,18 +51,35 @@
         }
     },
     "scripts": {
+        "analyze": "vendor/bin/psalm --no-cache",
+        "check": "vendor/bin/phpcs --ignore=*.blade.php --standard=PSR12 app config database/factories database/seeders routes",
+        "check-fix": "vendor/bin/phpcbf --ignore=*.blade.php --standard=PSR12 app config database/factories database/seeders routes",
+        "cpd-check": "vendor/bin/phpcpd app database/factories database/seeders tests",
+        "test": "php artisan test",
+        "test-coverage": "export XDEBUG_MODE=coverage && vendor/bin/phpunit",
+        "scripts-descriptions": {
+            "analyze": "Run Code Analysis for the Source Files",
+            "check": "Run PHP CodeSniffer to check for PSR12 coding standard issues",
+            "check-fix": "Run PHP CodeSniffer to fix for PSR12 coding standard issues",
+            "cpd-check": "Run PHP Copy/Paste Detector to detect copy/pasted code",
+            "test": "Run Test Suite for the Project",
+            "test-coverage": "Run Test Suite for the Project and Generate Code Coverage"
+        },
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
             "@php artisan package:discover --ansi"
         ],
+        "post-install-cmd": [
+            "bash git-hooks/setup.sh"
+        ],
         "post-update-cmd": [
-            "@php artisan vendor:publish --tag=laravel-assets --ansi --force"
+            "bash git-hooks/setup.sh"
         ],
         "post-root-package-install": [
             "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
         ],
         "post-create-project-cmd": [
-            "@php artisan key:generate --ansi"
+            "@php artisan key:generate --ansi" 
         ]
     },
     "extra": {
@@ -55,10 +90,7 @@
     "config": {
         "optimize-autoloader": true,
         "preferred-install": "dist",
-        "sort-packages": true,
-        "allow-plugins": {
-            "pestphp/pest-plugin": true
-        }
+        "sort-packages": true
     },
     "minimum-stability": "dev",
     "prefer-stable": true

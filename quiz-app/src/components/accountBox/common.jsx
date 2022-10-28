@@ -18,30 +18,39 @@ export const FormContainer = styled.form`
 
 export const MutedLinks = styled.a`
     font-size: 13px;
-    color: rgba(200, 200, 200, 1);
+    color: rgba(15,15,15, 0.3);
     font-weight: 500;
     text-decoration: none;
+
+    &:hover {
+        color: rgba(15,15,15, 0.4);
+    }
 `;
 
 export const BoldLink = styled.a`
     font-size: 13px;
-    color: rgb(117,130,208);
-    font-weight: 500;
+    color: rgb(16,24,80);
+    font-weight: 600;
     text-decoration: none;
     margin: 10px 0;
+
+    &:hover {
+        color: rgb(16,24,80);
+    }
 `;
 
 export const Input = styled.input`
     width: 100%;
     height: 40px;
     outline: none;
-    border: 1px solid rgba(200, 200, 200, 0.5);
+    font-size: 13px;
+    border: 1px solid rgba(15,15,15, 0.2);
     padding: 0 10px;
     transition: all 250ms ease-in-out;
-    border-bottom: 2px solid rgba(200, 200, 200, 0.5);
+    border-bottom: 2px solid rgba(15,15,15, 0.2);
 
     &::placeholder{
-        color: rgba(200, 200, 200, 2);
+        color: rgba(15,15,15, 0.3);
     }
 
     &:not(:last-of-type) {
@@ -50,7 +59,7 @@ export const Input = styled.input`
 
     &:focus {
         outline: none;
-        border-bottom: 2px solid rgb(190,199,235);
+        border-bottom: 2px solid rgb(45,59,148);
     }
 `;
 
@@ -58,19 +67,19 @@ export const SubmitButton = styled.button`
     width: 100%;
     padding: 10px 40%;
     color: #fff;
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 600;
     border: none;
     border-radius: 50px;
     cursor: pointer;
     transition: all 240ms ease-in-out;
     // background: rgb(190,199,235);
-    // background: linear-gradient(90deg, rgba(255,244,0,1) 0%, rgba(227,218,21,1) 86%, rgba(255,201,0,1) 100%);
-    background: rgb(190,199,235);
-    background: linear-gradient(90deg, rgba(190,199,235,1) 0%, rgba(94,113,233,1) 49%, rgba(23,78,201,1) 100%);
+    // background: linear-gradient(90deg, rgba(190,199,235,1) 0%, rgba(94,113,233,1) 49%, rgba(23,78,201,1) 100%);
+    background: rgb(45,59,148);
+    background: linear-gradient(90deg, rgba(45,59,148,1) 0%, rgba(0,0,0,1) 100%);
 
     &:hover {
-        filter: brightness(1.05);
+        filter: brightness(1.2);
     }
 `;
 
@@ -84,8 +93,8 @@ export const ErrorMessage = styled.div`
     width: 100%;
     justify-content: center;
     align-items: center;
-    color: rgb(117,130,208);
+    color: rgb(16,24,80);
     font-weight: 600;
-    font-size: 14px;
+    font-size: 13px;
     margin-bottom: 1em;
 `;

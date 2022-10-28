@@ -6,23 +6,33 @@ import Quiz from "./components/pages/Quiz";
 import Login from "./components/pages/Login";
 import Dashboard from "./components/pages/Dashboard";
 import NoMatch from "./components/pages/NoMatch";
-
+import { AuthProvider } from "./utilities/Auth";
+import RequireAuth from "./utilities/RequireAuth";
+import AddQuestion from "./components/pages/AddQuestion";
+import EditQuestion from "./components/pages/EditQuestion";
+import DeleteQuestion from "./components/pages/DeleteQuestion";
 
 function App() {
-  return (
+  return (<>
     <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<Home />} />
-          <Route path="contact" element={<Contact />} />
-          <Route path="quiz" element={<Quiz />} />
-          <Route path="login" element={<Login />} />
-          <Route path="dashboard" element={<Dashboard />} />
-        </Route>
-        <Route path="*" element={<NoMatch />} />
-      </Routes>
+      <AuthProvider>
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route path="home" element={<Home />} />
+            <Route path="contact" element={<Contact />} />
+            <Route path="quiz" element={<Quiz />} />
+            <Route path="login" element={<Login />} />
+            <Route path="dashboard" element={<RequireAuth><Dashboard /></RequireAuth>}>
+              <Route path="question/add" element={<AddQuestion />} />
+              <Route path="question/edit" element={<EditQuestion />} />
+              <Route path="question/delete" element={<DeleteQuestion />} />
+            </Route>
+          </Route>
+          <Route path="*" element={<NoMatch />} />
+        </Routes>
+      </AuthProvider>
     </BrowserRouter>
-  );
+  </>);
 }
 
 export default App;

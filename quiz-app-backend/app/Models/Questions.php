@@ -13,6 +13,6 @@ class Questions extends Model
 
     public function answers()
     {
-        return $this->hasMany(Answers::class, 'question_id');
+        return $this->hasMany(Answers::class, 'question_id', 'id');
     }
 }

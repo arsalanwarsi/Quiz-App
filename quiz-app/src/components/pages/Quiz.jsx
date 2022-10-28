@@ -1,11 +1,11 @@
-import React from 'react'
+import AllQuestions from '../../utilities/AllQuestions';
 
 function Quiz() {
-    return (
-        <>
-            <div>Quiz</div>
-        </>
-    )
+    return (<>
+        <div className="container my-4">
+            <AllQuestions />
+        </div>
+    </>);
 }
 
 export default Quiz

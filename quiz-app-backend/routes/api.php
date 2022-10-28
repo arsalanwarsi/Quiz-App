@@ -15,6 +15,8 @@ Route::middleware('auth:sanctum')->get('/question/{id}', [UserController::class,
 
 Route::middleware('auth:sanctum')->post('/logout', [UserController::class, 'logout']);
 
+Route::middleware('auth:sanctum')->get('/islogin', [UserController::class, 'isLogin']);
+
 
 
 

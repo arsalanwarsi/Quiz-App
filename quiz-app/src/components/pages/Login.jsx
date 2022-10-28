@@ -1,4 +1,5 @@
-// import React from 'react'
+
+import { Navigate } from "react-router-dom";
 import styled from "styled-components";
 import { AccountBox } from '../accountBox';
 
@@ -12,13 +13,17 @@ const AppContainer = styled.div`
 `;
 
 function Login() {
-    return (
-        <>
-            <AppContainer>
-                <AccountBox />
-            </AppContainer>
-        </>
-    )
+
+    const userAuth = localStorage.getItem("token");
+
+    if (userAuth != null) {
+        return <Navigate to="/home" />;
+    }
+    return (<>
+        <AppContainer>
+            <AccountBox />
+        </AppContainer>
+    </>);
 }
 
 export default Login

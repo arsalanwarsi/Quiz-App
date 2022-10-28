@@ -1,8 +1,9 @@
 import React, { useContext, useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { AccountContext } from "./accountContext";
 import { BoldLink, BoxContainer, ErrorMessage, FormContainer, Input, MarginVertical, MutedLinks, SubmitButton } from "./common";
+import { useAuth } from "../../utilities/Auth";
 
 
 
@@ -11,6 +12,11 @@ export function LoginForm(props) {
     const { switchToSignup } = useContext(AccountContext);
     const navigate = useNavigate();
 
+    // const [user, setUser] = useState("");
+    const auth = useAuth();
+    const location = useLocation();
+
+    const redirectPath = location.state?.path || '/';
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -19,14 +25,15 @@ export function LoginForm(props) {
         message: ''
     });
 
-
     const submitForm = (e) => {
         e.preventDefault();
+
 
         const user = {
             email,
             password,
         };
+
         if (email === '' || password === '') {
             setError({
                 status: true,
@@ -43,7 +50,10 @@ export function LoginForm(props) {
                 .then((res) => {
                     if (res.data.status === true) {
                         localStorage.setItem('token', res.data.token);
-                        navigate('/dashboard');
+                        localStorage.setItem('user', res.data.user.name);
+                        document.cookie = "token=" + res.data.token + ";expires=10; path=/";
+                        auth.login(res.data.user.name);
+                        navigate(redirectPath, { replace: true });
                     }
                     else {
                         document.getElementById("login-btn").disabled = false;
@@ -79,10 +89,11 @@ export function LoginForm(props) {
         <MarginVertical />
         <MarginVertical />
         <div>
-            <MutedLinks href="/">
+            <MutedLinks>
                 Don't have account ?
             </MutedLinks>
             <BoldLink href="#" onClick={switchToSignup}> Signup</BoldLink>
         </div>
+        <MarginVertical />
     </BoxContainer>
 }
